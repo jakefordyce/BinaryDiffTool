@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BinaryDiffTool.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +21,11 @@ namespace BinaryDiffTool
     /// </summary>
     public partial class MainWindow : Window
     {
+        DiffToolViewModel vm = new DiffToolViewModel();
+
         public MainWindow()
         {
+            DataContext = vm;
             InitializeComponent();
         }
     }

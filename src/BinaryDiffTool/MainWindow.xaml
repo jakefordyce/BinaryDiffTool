@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BinaryDiffTool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Diff Tool" Height="768" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
@@ -19,11 +19,22 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-            <Button />
-            <TextBlock />
-            <Button />
-            <TextBlock />
-            <Button />
+            <Button Content="Load File 1" Command="{Binding OpenFile1}" />
+            <TextBlock Text="{Binding FileName1}" MinWidth="100" Margin="10,0,10,0"/>
+            <Button Content="Load File 2" Command="{Binding OpenFile2}"/>
+            <TextBlock Text="{Binding FileName2}" MinWidth="100" Margin="10,0,10,0"/>
+            <Button Content="Refresh Diffs" Command="{Binding RefreshDiff}"/>
         </StackPanel>
+        <ListView Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Diffs}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding LineNumHex}" Width="50"/>
+                        <TextBlock Text=": " />
+                        <TextBlock Text="{Binding Change}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
